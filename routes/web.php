@@ -13,6 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/dashboard','DashboardController@dashboard')->name('dashboard');
+Route::prefix('doctor')->group(function ()
+{
+    Route::get('/list','DoctorController@index')->name('doctor.dashboard');
+    Route::post('/save','DoctorController@save')->name('doctor.save');
+    Route::post('/update','DoctorController@update')->name('doctor.update');
+    Route::post('/delete','DoctorController@delete')->name('doctor.delete');
+});
+Route::prefix('patient')->group(function ()
+{
+    Route::get('/patient-list','PatientController@index')->name('patient.list');
+});
+Route::prefix('work_item')->group(function ()
+{
+    Route::get('/list','WorkController@index')->name('work_item.list');
+    Route::post('/save','WorkController@save')->name('work_item.save');
+    Route::post('/update','WorkController@update')->name('work_item.update');
+    Route::post('/delete','WorkController@delete')->name('work_item.delete');
+});
+Route::prefix('tooth_shade')->group(function ()
+{
+    Route::get('/list','ShadeController@index')->name('tooth_shade.list');
+    Route::post('/save','ShadeController@save')->name('tooth_shade.save');
+    Route::post('/update','ShadeController@update')->name('tooth_shade.update');
+    Route::post('/delete','ShadeController@delete')->name('tooth_shade.delete');
+});
+Route::get('/pat', function()
+{
+    return view('Frontend.new_patient');
 });
