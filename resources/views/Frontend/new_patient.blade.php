@@ -3,7 +3,6 @@
 <div class="page-wrapper">
     <!-- Page Content-->
     <div class="page-content">
-
         <div class="container-fluid">
             <!-- Page-Title -->
             <div class="row">
@@ -15,7 +14,7 @@
             </div>
             <div class="card">
                 <div class="card-body bootstrap-select-1">
-                    <form action="" method="post">
+                    <form action="{{route('patient.save')}}" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="form-group">
                                 <div class="input-group">
@@ -45,7 +44,7 @@
                                 </select>
                             </div>                                    
                             <div class="form-group">
-                                <select class="select2 mb-3 select2-multiple" style="width: 100%" name="tooth_number" multiple="multiple" data-placeholder="Select Tooth Number">
+                                <select class="select2 mb-3 select2-multiple" style="width: 100%" name="tooth_number[]" multiple="multiple" size="10" data-placeholder="Select Tooth Number">
                                     <optgroup label="Quadrent 1">
                                         <option value="11">1</option>
                                         <option value="12">2</option>
@@ -100,13 +99,13 @@
                             </div>
                             <div class="form-group">
                                 <select class="select2 form-control mb-3 custom-select" name="abutments" style="width: 100%; height:36px;">
-                                <option>Select Abutments (If Any)</option>
+                                <option value="NONE">Select Abutments (If Any)</option>
                                 <option value="Joint">Joint</option>
                                 <option value="Separate">Separate</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select class="select2 form-control mb-3 custom-select" name="work_item_id" style="width: 100%; height:36px;">
+                                <select class="select2 form-control mb-3 custom-select" name="shade_id" style="width: 100%; height:36px;">
                                 <option>Select Shade</option>
                                 <?php
                                     $Shades = App\Models\tooth_shade::all()->sortby('shade_code');
@@ -116,6 +115,7 @@
                                 @endforeach
                                 </select>
                             </div>
+                            <button type="submit" class="btn btn-primary">Generate QrCode</button>
                     </form>
                 </div>
             </div>
@@ -125,11 +125,8 @@
 
 @endsection
 @section('script')
-
 <!-- Plugins js -->
-<script src="{{asset('plugins/moment/moment.js')}}"></script>
 <script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
 <script src="{{asset('plugins/select2/select2.min.js')}}"></script>
-
 <script src="{{asset('assets/pages/jquery.forms-advanced.js')}}"></script>
 @endsection

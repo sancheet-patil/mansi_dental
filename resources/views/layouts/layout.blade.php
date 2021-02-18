@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <head>
+<head>
         <meta charset="utf-8" />
-        <title>Mansi-Dental Clinic</title>
+        <title>Precision-Lab</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta content="Work Item Record" name="description" />
         <meta content="" name="author" />
@@ -30,7 +29,7 @@
         <link href="{{asset('assets/css/metisMenu.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
 
-    </head>
+</head>
 
     <body class="dark-topbar">
 
@@ -199,7 +198,7 @@
                             <li>
                                 <a href="javascript: void(0);"><i class="ti-control-record"></i>Doctors<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{route('doctor.dashboard')}}">Add Doctor</a></li>
+                                    <li><a href="{{route('doctor.list')}}">Add Doctor</a></li>
                                 </ul>
                             </li> 
                         </ul> 
@@ -227,7 +226,10 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>                   
+                    </li>  
+                    <li>
+                        <a href="{{route('patient.addView')}}"><i class="ti-bar-chart"></i><span>Add New Patient</span><span class="menu-arrow"></span></a>
+                    </li>                 
                 </ul>
             </div>
             <!-- end left-sidenav-->
