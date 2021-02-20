@@ -26,8 +26,7 @@
                 <!-- Page Content-->
                 <div class="page-content">
                         <div class="container-fluid">
-                        {!! QrCode::size(100)->generate('http://192.168.0.28/mansi_dental/public/'.$patient->work_code); !!}
-
+                        {!! QrCode::size(100)->generate($QrCode); !!}
                         </div>
                 </div>
         </div>

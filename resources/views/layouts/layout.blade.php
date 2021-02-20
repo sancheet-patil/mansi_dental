@@ -9,9 +9,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
         <link href="{{asset('plugins/jvectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet">
+
+        <!-- DataTables -->
+        <link href="{{asset('plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('plugins/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+        <!-- Responsive datatable examples -->
+        <link href="{{asset('plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" /> 
 
         <!-- Plugins css -->
         <link href="{{asset('plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet" />
@@ -191,44 +197,36 @@
                     <li>
                         <a href="{{route('dashboard')}}"><i class="ti-bar-chart"></i><span>Dashboard</span><span class="menu-arrow"></span></a>
                     </li>
-    
+
                     <li>
-                        <a href="javascript: void(0);"><i class="ti-server"></i><span>Administrator</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <a href="javascript: void(0);"><i class="ti-control-record"></i>Doctors<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);"><i class="ti-control-record"></i>Doctors<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{route('doctor.list')}}">Add Doctor</a></li>
-                                </ul>
-                            </li> 
-                        </ul> 
-                        <ul class="nav-second-level" aria-expanded="false">
-                                <li>
-                                    <a href="javascript: void(0);"><i class="ti-control-record"></i>Patient<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                                    <ul class="nav-second-level" aria-expanded="false">
-                                        <li><a href="{{route('patient.list')}}">Patient list</a></li>
-                                    </ul>
-                                </li>
+                            <li><a href="{{route('doctor.list')}}">Add Doctor</a></li>
                         </ul>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);"><i class="ti-control-record"></i>Work Item<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{route('work_item.list')}}">Work Item list</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);"><i class="ti-control-record"></i>Shade Code<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="{{route('tooth_shade.list')}}">Shade Code list</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>  
+                    </li>
+
                     <li>
-                        <a href="{{route('patient.addView')}}"><i class="ti-bar-chart"></i><span>Add New Patient</span><span class="menu-arrow"></span></a>
+                        <a href="javascript: void(0);"><i class="ti-control-record"></i>Patient<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{route('patient.list')}}">Patient list</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="ti-control-record"></i>Work Item<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{route('work_item.list')}}">Work Item list</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="ti-control-record"></i>Shade Code<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{route('tooth_shade.list')}}">Shade Code list</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{route('patient.addView')}}"><i class="ti-user"></i><span>Add New Patient</span><span class="menu-arrow"></span></a>
                     </li>                 
                 </ul>
             </div>
@@ -280,5 +278,18 @@
         <script src="{{asset('assets/js/waves.js')}}"></script>
         <script src="{{asset('assets/js/feather.min.js')}}"></script>
         <script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script> 
+
+        <script src="{{asset('plugins/datatables/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/jszip.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/pdfmake.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/vfs_fonts.js')}}"></script>
+<script src="{{asset('plugins/datatables/buttons.html5.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/buttons.print.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/buttons.colVis.min.js')}}"></script>
+<!-- Responsive examples -->
+<script src="{{asset('plugins/datatables/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/pages/jquery.datatable.init.js')}}"></script>    
     </body>
 </html>

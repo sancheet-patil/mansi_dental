@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\patient_work;
+use Illuminate\Support\Facades\DB;
 
 class PatientController extends Controller
 {
     //
     public function index()
     {
-        return view('Frontend.patient');
+        $patient = patient_work::all();
+        return view('Frontend.patient',compact('patient'));
     }
 
     public function addView()
@@ -27,9 +29,11 @@ class PatientController extends Controller
         $patient->work_id = $request->work_item_id;
         $patient->shade= $request->shade_id;
         $patient->abutments = $request->abutments;
-        $patient->work_code = $request->work_item_id + rand(0000000010,10000000000);
+        $patient->work_code = "PR".date('Y').rand(000010,100000);
         $patient->save();
-        return view('Frontend.QrCode',compact('patient'));
+        $workName = DB::table('work_item')->select('work_item')->where('id',$patient->work_id)->first();
+        $QrCode = " \n Patient Name : ".$patient->patient_name." \n Tooth Number : ".$patient->tooth_Number."\n Work : ". $workName->work_item;
+        return view('Frontend.QrCode',compact('QrCode'));
 
     }
 }
