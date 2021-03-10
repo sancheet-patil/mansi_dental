@@ -14,7 +14,7 @@
             </div>
             <div class="card">
                 <div class="card-body bootstrap-select-1">
-                    <form action="{{route('patient.save')}}" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal well" action="{{route('patient.save')}}" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="form-group">
                                 <div class="input-group">
@@ -115,6 +115,94 @@
                                 @endforeach
                                 </select>
                             </div>
+                            <!--start fieldset-->
+                                <div class="repeater-default">
+                                    <div data-repeater-list="car">
+                                        <div data-repeater-item="">
+                                            <div class="form-group row d-flex align-items-end">
+                                                
+                                                <div class="col-sm-4">
+                                                    <label class="control-label">Make</label>
+                                                    <select name="car[0][make]" class="form-control">
+                                                        <option value="volkswagon" selected="">Volkswagon</option>
+                                                        <option value="honda">Honda</option>
+                                                        <option value="ford">Ford</option>
+                                                    </select>
+                                                </div><!--end col-->
+                                                
+                                                <div class="col-sm-4">
+                                                    <label class="control-label">Model</label>
+                                                    <input type="text" name="car[0][model]" value="Beetle" class="form-control">
+                                                </div><!--end col-->
+                                    
+                                                <div class="col-sm-3">
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck1"  name="car[0][features][]" value="ac">
+                                                        <label class="custom-control-label" for="customCheck1">Air Conditioning</label>
+                                                    </div>
+
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck2" name="car[0][features][]" value="abs">
+                                                        <label class="custom-control-label" for="customCheck2">Anti-Lock Brakes</label>
+                                                    </div>
+                                                </div><!--end col-->
+                                    
+                                                <div class="col-sm-1">
+                                                    <span data-repeater-delete="" class="btn btn-gradient-danger btn-sm">
+                                                        <span class="far fa-trash-alt mr-1"></span> Delete
+                                                    </span>
+                                                </div><!--end col-->
+                                            </div><!--end row-->
+                                        </div><!--end /div-->
+                                
+                                        <div data-repeater-item="">
+                                            <div class="form-group row d-flex align-items-end">
+                                                
+                                                <div class="col-sm-4">
+                                                    <label class="control-label">Make</label>
+                                                    <select name="car[1][make]" class="form-control">
+                                                        <option value="volkswagon">Volkswagon</option>
+                                                        <option value="honda" selected="">Honda</option>
+                                                        <option value="ford">Ford</option>
+                                                    </select>
+                                                </div><!--end col-->                                                    
+                                                
+                                                <div class="col-sm-4">
+                                                    <label class="control-label">Model</label>
+                                                    <input type="text" name="car[1][model]" value="Accord" class="form-control">
+                                                </div><!--end col-->
+                                    
+                                                <div class="col-sm-3">
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck3"  name="car[0][features][]" value="ac">
+                                                        <label class="custom-control-label" for="customCheck3">Air Conditioning</label>
+                                                    </div>
+
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck4" name="car[0][features][]" value="abs">
+                                                        <label class="custom-control-label" for="customCheck4">Anti-Lock Brakes</label>
+                                                    </div>
+                                                </div><!--end col-->
+                                    
+                                                <div class="col-sm-1">
+                                                    <span data-repeater-delete="" class="btn btn-gradient-danger btn-sm">
+                                                        <span class="far fa-trash-alt mr-1"></span> Delete
+                                                    </span>
+                                                </div><!--end col-->
+                                            </div><!--end row-->
+                                        </div><!--end /div-->
+                                    </div><!--end repet-list-->
+                                    <div class="form-group mb-0 row">
+                                        <div class="col-sm-12">
+                                            <span data-repeater-create="" class="btn btn-gradient-secondary">
+                                                <span class="fas fa-plus"></span> Add
+                                            </span>
+                                            <input type="submit" value="Submit" class="btn btn-gradient-primary">
+                                        </div><!--end col-->
+                                    </div><!--end row-->                                         
+                                </div> <!--end repeter-->                                           
+                            
+                            <!--end fieldset-->
                             <button type="submit" class="btn btn-primary">Generate QrCode</button>
                     </form>
                 </div>
@@ -129,4 +217,6 @@
 <script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
 <script src="{{asset('plugins/select2/select2.min.js')}}"></script>
 <script src="{{asset('assets/pages/jquery.forms-advanced.js')}}"></script>
+<script src="{{asset('plugins/repeater/jquery.repeater.min.js')}}"></script>
+<script src="{{asset('assets/pages/jquery.form-repeater.js')}}"></script>
 @endsection

@@ -27,6 +27,7 @@ Route::prefix('patient')->group(function ()
     Route::get('/list','PatientController@index')->name('patient.list');
     Route::get('/add_patient','PatientController@addView')->name('patient.addView');
     Route::post('/save','PatientController@save')->name('patient.save');
+    Route::get('/invoice','PatientController@invoice')->name('patient.invoice');
 });
 
 Route::prefix('work_item')->group(function ()
