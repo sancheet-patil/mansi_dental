@@ -873,6 +873,18 @@ class Collection implements ArrayAccess, Enumerable
     }
 
     /**
+     * Reduce the collection to a single value.
+     *
+     * @param  callable  $callback
+     * @param  mixed  $initial
+     * @return mixed
+     */
+    public function reduce(callable $callback, $initial = null)
+    {
+        return array_reduce($this->items, $callback, $initial);
+    }
+
+    /**
      * Replace the collection items with the given items.
      *
      * @param  mixed  $items
@@ -1086,7 +1098,7 @@ class Collection implements ArrayAccess, Enumerable
 
         $callback && is_callable($callback)
             ? uasort($items, $callback)
-            : asort($items, $callback ?? SORT_REGULAR);
+            : asort($items, $callback);
 
         return new static($items);
     }
@@ -1168,7 +1180,7 @@ class Collection implements ArrayAccess, Enumerable
                 if (is_callable($prop)) {
                     $result = $prop($a, $b);
                 } else {
-                    $values = [data_get($a, $prop), data_get($b, $prop)];
+                    $values = [Arr::get($a, $prop), Arr::get($b, $prop)];
 
                     if (! $ascending) {
                         $values = array_reverse($values);

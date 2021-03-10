@@ -57,7 +57,12 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
             }
         }
 
-        $content = $request->getContent();
+        try {
+            $content = $request->getContent();
+        } catch (\LogicException $e) {
+            // the user already got the request content as a resource
+            $content = false;
+        }
 
         $sessionMetadata = [];
         $sessionAttributes = [];
@@ -91,7 +96,7 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
             'method' => $request->getMethod(),
             'format' => $request->getRequestFormat(),
             'content_type' => $response->headers->get('Content-Type', 'text/html'),
-            'status_text' => Response::$statusTexts[$statusCode] ?? '',
+            'status_text' => isset(Response::$statusTexts[$statusCode]) ? Response::$statusTexts[$statusCode] : '',
             'status_code' => $statusCode,
             'request_query' => $request->query->all(),
             'request_request' => $request->request->all(),
@@ -359,12 +364,12 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
      */
     public function getRedirect()
     {
-        return $this->data['redirect'] ?? false;
+        return isset($this->data['redirect']) ? $this->data['redirect'] : false;
     }
 
     public function getForwardToken()
     {
-        return $this->data['forward_token'] ?? null;
+        return isset($this->data['forward_token']) ? $this->data['forward_token'] : null;
     }
 
     public function onKernelController(ControllerEvent $event)

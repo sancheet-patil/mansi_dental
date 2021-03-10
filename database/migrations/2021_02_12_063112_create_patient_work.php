@@ -21,7 +21,8 @@ class CreatePatientWork extends Migration
             $table->text('abutments')->nullable();
             $table->foreignId('pontic_design')->nullable();
             $table->text('patient_name');
-
+            $table->text('tooth_Number');
+            $table->foreignId('work_id');
             $table->foreignId('shade');
             $table->date('warranty_expiry_date')->nullable();
             $table->integer('flag')->default(0);
@@ -30,6 +31,11 @@ class CreatePatientWork extends Migration
             $table->foreign('doctor_id')
             ->references('id')
             ->on('doctors')
+            ->onDelete('cascade');
+
+            $table->foreign('work_id')
+            ->references('id')
+            ->on('work_item')
             ->onDelete('cascade');
 
             $table->foreign('shade')

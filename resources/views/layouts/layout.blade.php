@@ -242,7 +242,6 @@
             </div>
 
         <!-- jQuery  -->
-        
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('assets/js/metismenu.min.js')}}"></script>
@@ -281,16 +280,16 @@
         <script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script> 
 
         <script src="{{asset('plugins/datatables/dataTables.buttons.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables/buttons.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables/jszip.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables/pdfmake.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables/vfs_fonts.js')}}"></script>
-        <script src="{{asset('plugins/datatables/buttons.html5.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables/buttons.print.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables/buttons.colVis.min.js')}}"></script>
-        <!-- Responsive examples -->
-        <script src="{{asset('plugins/datatables/dataTables.responsive.min.js')}}"></script>
-        <script src="{{asset('plugins/datatables/responsive.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('assets/pages/jquery.datatable.init.js')}}"></script>    
+<script src="{{asset('plugins/datatables/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/jszip.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/pdfmake.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/vfs_fonts.js')}}"></script>
+<script src="{{asset('plugins/datatables/buttons.html5.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/buttons.print.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/buttons.colVis.min.js')}}"></script>
+<!-- Responsive examples -->
+<script src="{{asset('plugins/datatables/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/pages/jquery.datatable.init.js')}}"></script>    
     </body>
 </html>

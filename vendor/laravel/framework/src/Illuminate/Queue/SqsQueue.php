@@ -45,20 +45,14 @@ class SqsQueue extends Queue implements QueueContract, ClearableQueue
      * @param  string  $default
      * @param  string  $prefix
      * @param  string  $suffix
-     * @param  bool  $dispatchAfterCommit
      * @return void
      */
-    public function __construct(SqsClient $sqs,
-                                $default,
-                                $prefix = '',
-                                $suffix = '',
-                                $dispatchAfterCommit = false)
+    public function __construct(SqsClient $sqs, $default, $prefix = '', $suffix = '')
     {
         $this->sqs = $sqs;
         $this->prefix = $prefix;
         $this->default = $default;
         $this->suffix = $suffix;
-        $this->dispatchAfterCommit = $dispatchAfterCommit;
     }
 
     /**

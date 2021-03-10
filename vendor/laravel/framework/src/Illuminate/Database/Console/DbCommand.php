@@ -83,7 +83,7 @@ class DbCommand extends Command
     {
         $driver = ucfirst($connection['driver']);
 
-        if (method_exists($this, "get{$driver}Environment")) {
+        if (method_exists($this, "get{$driver}Env")) {
             return $this->{"get{$driver}Environment"}($connection);
         }
 

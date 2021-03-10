@@ -937,15 +937,11 @@ class Mailable implements MailableContract, Renderable
                 $view = $this->buildView(), $this->buildViewData()
             );
 
-            if (is_array($view) && isset($view[1])) {
-                $text = $view[1];
-            }
-
-            $text = $text ?? $view['text'] ?? '';
+            $text = $view['text'] ?? '';
 
             if (! empty($text) && ! $text instanceof Htmlable) {
                 $text = Container::getInstance()->make('mailer')->render(
-                    $text, $this->buildViewData()
+                    $view['text'], $this->buildViewData()
                 );
             }
 
