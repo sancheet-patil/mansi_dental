@@ -33,7 +33,10 @@ class PatientController extends Controller
         $patient->save();
         $workName = DB::table('work_item')->select('work_item')->where('id',$patient->work_id)->first();
         $QrCode = " \n Patient Name : ".$patient->patient_name." \n Tooth Number : ".$patient->tooth_Number."\n Work : ". $workName->work_item;
-        return view('Frontend.QrCode',compact('QrCode'));
-
+        $path='QrCode/'.$patient->patient_name.'.png';
+        QrCode::size(500)
+            ->format('png')
+            ->generate($QrCode, public_path($path));
+        return response()->download($path, $patient->patient_name, ['Content-Type' => 'image/png']);
     }
 }
