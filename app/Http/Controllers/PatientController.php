@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\patient_work;
 use Illuminate\Support\Facades\DB;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\work_item;
+use Carbon\Carbon;
 
 class PatientController extends Controller
 {
@@ -30,13 +33,16 @@ class PatientController extends Controller
         $patient->shade= $request->shade_id;
         $patient->abutments = $request->abutments;
         $patient->work_code = "PR".date('Y').rand(000010,100000);
+        $workPeriod = DB::table('work_item')->select('warranty_period')->where('id',$request->work_item_id)->first();
+        $Wp= $workPeriod->warranty_period/12;
+        $patient->warranty_expiry_date = Carbon::now()->addYears($Wp);
         $patient->save();
         $workName = DB::table('work_item')->select('work_item')->where('id',$patient->work_id)->first();
-        $QrCode = " \n Patient Name : ".$patient->patient_name." \n Tooth Number : ".$patient->tooth_Number."\n Work : ". $workName->work_item;
+        $QrCode = " \n Patient Name : ".$patient->work_code." \n Tooth Number : ".$patient->tooth_Number."\n Work : ". $workName->work_item."\n Warranty Expiry:".$patient->warranty_expiry_date;
         $path='QrCode/'.$patient->patient_name.'.png';
-        QrCode::size(500)
+        QrCode::size(250)
             ->format('png')
             ->generate($QrCode, public_path($path));
-        return response()->download($path, $patient->patient_name, ['Content-Type' => 'image/png']);
+        return response()->download($path, $patient->work_code.'.png', ['Content-Type' => 'image/png']);
     }
 }
