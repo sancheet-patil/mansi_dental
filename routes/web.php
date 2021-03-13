@@ -27,6 +27,10 @@ Route::prefix('patient')->group(function ()
     Route::get('/list','PatientController@index')->name('patient.list');
     Route::get('/add_patient','PatientController@addView')->name('patient.addView');
     Route::post('/save','PatientController@save')->name('patient.save');
+    Route::post('/update','PatientController@update')->name('patient.update');
+    Route::post('/delete','PatientController@delete')->name('patient.delete');
+    Route::get('/qrcode/{id}','PatientController@qrcode')->name('patient.qrcode');
+    Route::get('/invoice/{id}','PatientController@invoice')->name('patient.invoice');
 });
 
 Route::prefix('work_item')->group(function ()

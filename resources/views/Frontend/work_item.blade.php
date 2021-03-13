@@ -168,7 +168,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Warranty</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="In Months" name="warranty_period">
+                    <input type="text" class="form-control" placeholder="In years" name="warranty_period">
                 </div>
             </div>
             </div>

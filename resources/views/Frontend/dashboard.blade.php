@@ -48,8 +48,8 @@
                 <div class="media">
                     <img src="../assets/images/users/user-1.png" alt="" class="thumb-md rounded-circle mr-2">                                       
                     <div class="media-body align-self-center">
-                        <h4 class="mt-0 mb-1">Welcome back, Lucy Peterson</h4>
-                        <p class="text-muted mb-0 font-14 pr-5">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                        <h4 class="mt-0 mb-1">Welcome to precision art !!!!</h4>
+                        <p class="text-muted mb-0 font-14 pr-5">The world of Dental Lab</p>
                     </div><!--end media-body-->
                 </div><!--end media-->
                 <div class="welcome-img">

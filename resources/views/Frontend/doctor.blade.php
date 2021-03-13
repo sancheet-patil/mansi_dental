@@ -52,7 +52,7 @@
                         <td>{{$doctor->ClinicName}}</td>
                         <td>{{$doctor->Address}}</td>
                         <td>{{$doctor->PhoneNumber}}</td>
-                        <td>20</td>
+                        <td>{{\App\Models\patient_work::where('doctor_id', '=', $doctor->id)->get()->count()}}</td>
                         <td class="text-right">
                             <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit{{$doctor->id}}"><i class="fa fa-edit"></i> </button>
                             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$doctor->id}}"><i class="fa fa-trash"></i> </button>

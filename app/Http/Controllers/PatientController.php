@@ -22,6 +22,7 @@ class PatientController extends Controller
     {
         return view('Frontend.new_patient');
     }
+
     public function save(Request $request)
     {
         $patient = new patient_work();
@@ -34,8 +35,7 @@ class PatientController extends Controller
         $patient->abutments = $request->abutments;
         $patient->work_code = "PR".date('Y').rand(000010,100000);
         $workPeriod = DB::table('work_item')->select('warranty_period')->where('id',$request->work_item_id)->first();
-        $Wp= $workPeriod->warranty_period/12;
-        $patient->warranty_expiry_date = Carbon::now()->addYears($Wp);
+        $patient->warranty_expiry_date = Carbon::now()->addYears($workPeriod->warranty_period);
         $patient->save();
         $workName = DB::table('work_item')->select('work_item')->where('id',$patient->work_id)->first();
         $QrCode = " \n Patient Name : ".$patient->work_code." \n Tooth Number : ".$patient->tooth_Number."\n Work : ". $workName->work_item."\n Warranty Expiry:".$patient->warranty_expiry_date;
@@ -43,6 +43,37 @@ class PatientController extends Controller
         QrCode::size(250)
             ->format('png')
             ->generate($QrCode, public_path($path));
-        return response()->download($path, $patient->work_code.'.png', ['Content-Type' => 'image/png']);
+        return response()->download($path, $patient->patient_name.'.png', ['Content-Type' => 'image/png']);
+    }
+
+    public function update(Request $request)
+    {
+        $patient = patient_work::find($request->patient_id);
+        $patient->patient_name = $request->patient_name;
+        $patient->doctor_id = $request->doctor_id; 
+        $patient->tooth_Number = $request->tooth_number;
+        $patient->work_id = $request->work_item_id;
+        $patient->shade= $request->shade_id;
+        $patient->save();
+        return back()->with('Succes',"Successfully Updated!!!");
+    }
+
+    public function delete(Request $request)
+    {
+        $patient= patient_work::where('id',$request->patient_id)->first();
+        $patient->delete();
+        return back()->with('Succes',"Successfully Delete!!!");
+    }
+
+    public function qrcode($id)
+    {
+        $patient = patient_work::find($id);
+        $path='QrCode/'.$patient->patient_name.'.png';
+        return response()->download($path, $patient->patient_name.'.png', ['Content-Type' => 'image/png']);
+    }
+
+    public function invoice ($id)
+    {
+
     }
 }
