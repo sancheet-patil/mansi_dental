@@ -20,6 +20,7 @@ Route::prefix('doctor')->group(function ()
     Route::post('/save','DoctorController@save')->name('doctor.save');
     Route::post('/update','DoctorController@update')->name('doctor.update');
     Route::post('/delete','DoctorController@delete')->name('doctor.delete');
+    Route::post('/invoice','DoctorController@invoice')->name('doctor.invoice');
 });
 
 Route::prefix('patient')->group(function ()
@@ -30,7 +31,6 @@ Route::prefix('patient')->group(function ()
     Route::post('/update','PatientController@update')->name('patient.update');
     Route::post('/delete','PatientController@delete')->name('patient.delete');
     Route::get('/qrcode/{id}','PatientController@qrcode')->name('patient.qrcode');
-    Route::get('/invoice/{id}','PatientController@invoice')->name('patient.invoice');
 });
 
 Route::prefix('work_item')->group(function ()

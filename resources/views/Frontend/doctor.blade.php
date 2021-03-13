@@ -54,7 +54,7 @@
                         <td>{{$doctor->PhoneNumber}}</td>
                         <td>{{\App\Models\patient_work::where('doctor_id', '=', $doctor->id)->get()->count()}}</td>
                         <td class="text-right">
-                            <a href="{{route('patient.qrcode',$doctor->id)}}"><button class="btn btn-secondary btn-sm" ><i class="fa fa-qrcode"></i> </button></a>
+                            <button class="btn btn-secondary btn-sm" class="btn btn-success btn-sm" data-toggle="modal" data-target="#date{{$doctor->id}}" ><i class="fa fa-id-card"></i></button>
                             <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit{{$doctor->id}}"><i class="fa fa-edit"></i> </button>
                             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$doctor->id}}"><i class="fa fa-trash"></i> </button>
                         </td>
@@ -73,7 +73,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                           are you sure to delete this course ?
-                                            <input type="hidden" class="form-control" name="course_delete_id" value="{{$doctor->id}}">
+                                            <input type="hidden" class="form-control" name="doctor_id" value="{{$doctor->id}}">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -134,6 +134,40 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="date{{$doctor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Date</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{route('doctor.invoice')}}" method="post">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <input type="hidden" class="form-control" name="doctor_id" value="{{$doctor->id}}">
+                                        <div class="form-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Date From</span>
+                                            </div>
+                                            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" name="dateFrom">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Date To</span>
+                                            </div>
+                                            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" name="dateTo">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Invoice</button>
                                     </div>
                                 </form>
                             </div>

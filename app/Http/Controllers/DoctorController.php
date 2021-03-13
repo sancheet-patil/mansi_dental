@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\doctors;
+use App\Models\patient_work;
+use App\Models\work_item;
+use Carbon\Carbon;
+
 class DoctorController extends Controller
 {
     //
@@ -52,4 +56,30 @@ class DoctorController extends Controller
         return back()->with('Succes',"Successfully Delete!!!");
     }
     
+    public function invoice (Request $request)
+    {
+        $doctor = doctors::find($request->doctor_id);
+        $patient_work = patient_work::where([['doctor_id','=',$doctor->id],['created_at','>',$request->dateFrom],['created_at','<',$request->dateTo]])->get();
+        $invoice = \ConsoleTVs\Invoices\Classes\Invoice::make();
+        foreach($patient_work as $patient)
+        {
+            $work=work_item::find($patient->work_id);
+            $quantity = sizeof(explode(',',$patient->tooth_Number));
+            $invoice->addItem($work->work_item, $work->price,$quantity, $patient->work_code, $patient->patient_name);
+        }
+        $invoice->number($doctor->id);
+        $invoice->with_pagination(true);
+        $invoice->duplicate_header(true);
+        $invoice->due_date(Carbon::now()->addMonths(1));
+        $invoice->notes('Bill to be paid hand to hand!!!!');
+        $invoice->customer([
+            'name'      => $doctor->ClinicName,
+            'id'        => $doctor->id,
+            'phone'     => $doctor->PhoneNumber,
+            'location'  => $doctor->Address,
+            'country'   => 'India',
+        ])
+        ->download($doctor->FirstName);
+
+    }
 }

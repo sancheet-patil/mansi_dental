@@ -7,6 +7,9 @@ use App\Models\patient_work;
 use Illuminate\Support\Facades\DB;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\work_item;
+use LaravelDaily\Invoices\Invoice;
+use LaravelDaily\Invoices\Classes\Party;
+use LaravelDaily\Invoices\Classes\InvoiceItem;
 use Carbon\Carbon;
 
 class PatientController extends Controller
@@ -72,8 +75,5 @@ class PatientController extends Controller
         return response()->download($path, $patient->patient_name.'.png', ['Content-Type' => 'image/png']);
     }
 
-    public function invoice ($id)
-    {
-
-    }
+    
 }
