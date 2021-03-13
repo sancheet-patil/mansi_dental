@@ -48,7 +48,6 @@
                                             <th>Patient Name</th>
                                             <th>Reffered Doctor</th>
                                             <th>Warranty Expiry</th>
-                                            <th class="text-right">Details</th>
                                             <th class="text-right">Action</th>
                                         </tr>
                                         </thead>
@@ -64,9 +63,6 @@
                                                     <td>{{$patients->warranty_expiry_date}}</td>
                                                     <td class="text-right">
                                                         <a href="{{route('patient.qrcode',$patients->id)}}"><button class="btn btn-secondary btn-sm" ><i class="fa fa-qrcode"></i> </button></a>
-                                                        <a href="{{route('patient.invoice',$patients->id)}}"><button class="btn btn-primary btn-sm" ><i class="fa fa-id-card"></i> </button></a>
-                                                    </td>
-                                                    <td class="text-right">
                                                         <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit{{$patients->id}}"><i class="fa fa-edit"></i> </button>
                                                         <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$patients->id}}"><i class="fa fa-trash"></i> </button>
                                                     </td>
