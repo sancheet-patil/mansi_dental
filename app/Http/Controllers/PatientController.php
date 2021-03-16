@@ -41,7 +41,7 @@ class PatientController extends Controller
         $patient->warranty_expiry_date = Carbon::now()->addYears($workPeriod->warranty_period);
         $patient->save();
         $workName = DB::table('work_item')->select('work_item')->where('id',$patient->work_id)->first();
-        $QrCode = " \n Patient Name : ".$patient->work_code." \n Tooth Number : ".$patient->tooth_Number."\n Work : ". $workName->work_item."\n Warranty Expiry:".$patient->warranty_expiry_date;
+        $QrCode = " \n Patient Name : ".$patient->patient_name." \n Tooth Number : ".$patient->tooth_Number."\n Work : ". $workName->work_item."\n Warranty Expiry:".$patient->warranty_expiry_date;
         $path='QrCode/'.$patient->patient_name.'.png';
         QrCode::size(250)
             ->format('png')
