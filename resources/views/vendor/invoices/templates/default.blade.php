@@ -88,6 +88,11 @@
                                 {{ __('invoices::invoice.phone') }}: {{ $invoice->seller->phone }}
                             </p>
                         @endif
+                        @if($invoice->seller->GSTN)
+                            <p class="seller-GSTN">
+                                {{ __('invoices::invoice.GSTN') }}: {{ $invoice->seller->phone }}
+                            </p>
+                        @endif
 
                         @foreach($invoice->seller->custom_fields as $key => $value)
                             <p class="seller-custom-field">

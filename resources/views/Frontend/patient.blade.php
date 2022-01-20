@@ -80,7 +80,7 @@
                                                                     <div class="modal-body">
                                                                         <div class="form-group">
                                                                           are you sure to delete this patient ?
-                                                                            <input type="hidden" class="form-control" name="_id" value="{{$patients->id}}">
+                                                                            <input type="hidden" class="form-control" name="patient_id" value="{{$patients->id}}">
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">

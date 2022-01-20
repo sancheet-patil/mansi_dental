@@ -65,13 +65,17 @@ class DoctorController extends Controller
         {
             $work=work_item::find($patient->work_id);
             $quantity = sizeof(explode(',',$patient->tooth_Number));
-            $invoice->addItem($work->work_item, $work->price,$quantity, $patient->work_code, $patient->patient_name);
+            $invoice->addItem($work->work_item, $work->price, $quantity, $patient->work_code, $patient->patient_name);
         }
+        $notes = ['heading' => 'PRECISION ART Bank Account Details:',
+                  'account_number'=> '59200000000386',
+                  'IFSC' => 'HDFC0000170',
+                  'branch' => 'CHALA VAPI'];
         $invoice->number($doctor->id);
         $invoice->with_pagination(true);
         $invoice->duplicate_header(true);
-        $invoice->due_date(Carbon::now()->addMonths(1));
-        $invoice->notes('Bill to be paid hand to hand!!!!');
+        $invoice->due_date(Carbon::now()->addDays(10));
+        $invoice->notes($notes);
         $invoice->customer([
             'name'      => $doctor->ClinicName,
             'id'        => $doctor->id,

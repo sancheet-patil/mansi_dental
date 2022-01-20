@@ -34,7 +34,7 @@ return [
    | You can change it on each invoice individually.
    */
 
-  'logo' => '',
+  'logo' => 'http://localhost/PR/public/assets/images/newlogo.jpg',
 
   /*
   |--------------------------------------------------------------------------
@@ -58,10 +58,10 @@ return [
 
   'business_details' => [
       'name'        => env('APP_NAME', 'My Company'),
-      'id'          => '1234567890',
-      'phone'       => '9601754565',
+      'phone'       => '8460881660',
       'location'    => 'Daman Road Chala',
       'zip'         => '396191',
+      'GSTN'        => '24AAYFP9153F1ZP',
       'city'        => 'Vapi',
   ],
 
@@ -74,7 +74,7 @@ return [
   | some copyright message or simple legal terms.
   */
 
-  'footnote' => '',
+  'footnote' => 'Precision Lab Copyright @2021',
 
   /*
   |--------------------------------------------------------------------------
@@ -90,10 +90,15 @@ return [
   */
   'tax_rates' => [
     [
-        'name'      => 'GST',
-        'tax'       => 12,
+        'name'      => 'CGST',
+        'tax'       => 6,
         'tax_type'  => 'percentage',
     ],
+    [
+      'name'      => 'SGST',
+      'tax'       => 6,
+      'tax_type'  => 'percentage',
+  ],
   ],
   
   /*
@@ -122,6 +127,6 @@ return [
   | This value is the default header parameter.
   | If true header will be duplicated on each page.
   */
-  'duplicate_header' => false,
+  'duplicate_header' => true,
 
 ];

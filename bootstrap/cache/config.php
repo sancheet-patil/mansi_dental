@@ -184,7 +184,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'E:\\Laravel-Project\\mansi_dental\\storage\\framework/cache/data',
+        'path' => 'C:\\xampp\\htdocs\\PR\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -262,7 +262,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'mansi_dental',
+        'database' => 'precision_lab',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -272,7 +272,7 @@
         'url' => NULL,
         'host' => 'localhost',
         'port' => '3306',
-        'database' => 'mansi_dental',
+        'database' => 'precision_lab',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -292,7 +292,7 @@
         'url' => NULL,
         'host' => 'localhost',
         'port' => '3306',
-        'database' => 'mansi_dental',
+        'database' => 'precision_lab',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -307,7 +307,7 @@
         'url' => NULL,
         'host' => 'localhost',
         'port' => '3306',
-        'database' => 'mansi_dental',
+        'database' => 'precision_lab',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -350,12 +350,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'E:\\Laravel-Project\\mansi_dental\\storage\\app',
+        'root' => 'C:\\xampp\\htdocs\\PR\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'E:\\Laravel-Project\\mansi_dental\\storage\\app/public',
+        'root' => 'C:\\xampp\\htdocs\\PR\\storage\\app/public',
         'url' => 'http://mansi_dental.test/storage',
         'visibility' => 'public',
       ),
@@ -372,7 +372,7 @@
     ),
     'links' => 
     array (
-      'E:\\Laravel-Project\\mansi_dental\\public\\storage' => 'E:\\Laravel-Project\\mansi_dental\\storage\\app/public',
+      'C:\\xampp\\htdocs\\PR\\public\\storage' => 'C:\\xampp\\htdocs\\PR\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -393,30 +393,36 @@
   array (
     'currency' => 'INR',
     'decimals' => 2,
-    'logo' => '',
+    'logo' => 'http://localhost/PR/public/assets/images/newlogo.jpg',
     'logo_height' => 60,
     'business_details' => 
     array (
       'name' => 'Precision-Lab',
-      'id' => '1234567890',
-      'phone' => '9601754565',
+      'phone' => '8460881660',
       'location' => 'Daman Road Chala',
       'zip' => '396191',
+      'GSTN' => '24AAYFP9153F1ZP',
       'city' => 'Vapi',
     ),
-    'footnote' => '',
+    'footnote' => 'Precision Lab Copyright @2021',
     'tax_rates' => 
     array (
       0 => 
       array (
-        'name' => 'GST',
-        'tax' => 12,
+        'name' => 'CGST',
+        'tax' => 6,
+        'tax_type' => 'percentage',
+      ),
+      1 => 
+      array (
+        'name' => 'SGST',
+        'tax' => 6,
         'tax_type' => 'percentage',
       ),
     ),
-    'due_date' => 'Jun 13th ,2021',
+    'due_date' => 'Mar 11th ,2022',
     'with_pagination' => true,
-    'duplicate_header' => false,
+    'duplicate_header' => true,
   ),
   'logging' => 
   array (
@@ -435,13 +441,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'E:\\Laravel-Project\\mansi_dental\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\PR\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'E:\\Laravel-Project\\mansi_dental\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\PR\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -491,7 +497,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'E:\\Laravel-Project\\mansi_dental\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\PR\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -548,7 +554,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'E:\\Laravel-Project\\mansi_dental\\resources\\views/vendor/mail',
+        0 => 'C:\\xampp\\htdocs\\PR\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -627,7 +633,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'E:\\Laravel-Project\\mansi_dental\\storage\\framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\PR\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -647,9 +653,9 @@
   array (
     'paths' => 
     array (
-      0 => 'E:\\Laravel-Project\\mansi_dental\\resources\\views',
+      0 => 'C:\\xampp\\htdocs\\PR\\resources\\views',
     ),
-    'compiled' => 'E:\\Laravel-Project\\mansi_dental\\storage\\framework\\views',
+    'compiled' => 'C:\\xampp\\htdocs\\PR\\storage\\framework\\views',
   ),
   'flare' => 
   array (
